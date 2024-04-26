@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container text-light">
+    <br>
+    <br>
+        <div class="card bg-dark shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Music List</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table text-light">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Artist</th>
+                                    <th scope="col">Album</th>
+                                    <th scope="col">Genre</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">See more</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for music in musics %}
+                                <tr>
+                                    <td>{{ music.title }}</td>
+                                    <td>{{ music.artist }}</td>
+                                    <td>{{ music.album }}</td>
+                                    <td>{{ music.genre }}</td>
+                                    <td>{{ music.duration }}</td>
+                                    <td><a href="{% url 'music' music.id %}">See more</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+

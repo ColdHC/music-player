@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container text-light">
+    <br>
+    <br>
+        <div class="card bg-dark shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> Outras Músicas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for music in musics %}
+                                    <tr>
+                                        <td><a href="{% url 'music' music.id %}">{{music.title}}</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-8"  style="border-left:solid; border-color:white;">
+                        <h2>{{ music.title }}</h2>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <img src="{% static 'SL-022222-48740-13.jpg' %}" class="card-img-top mx-auto d-block" alt="Illustrative Photo">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <h5 class="card-title text-center">{{ music.title }}</h5>
+                                <div class="d-flex justify-content-center">
+                                    <audio controls>
+                                        <source src="{{ music.audio.url }}" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
